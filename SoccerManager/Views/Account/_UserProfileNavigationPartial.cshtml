@@ -1,6 +1,7 @@
 ﻿<aside>
     <ul>
         <li>@Html.ActionLink("Show Profile", "ShowProfile", "Account")</li>
+        <li>@Html.ActionLink("Show Players", "ShowPlayers", new { id = WebSecurity.CurrentUserId })</li>
         <li>@Html.ActionLink("Buy Players", "ForSale", "Player")</li>
         <li>@Html.ActionLink("Change Password", "Manage", "Account")</li>
         @if (User.IsInRole("admin"))

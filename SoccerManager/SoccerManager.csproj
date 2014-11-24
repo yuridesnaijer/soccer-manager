@@ -353,6 +353,7 @@
     <Content Include="Views\News\_NewsPartial.cshtml" />
     <Content Include="Views\Player\ForSale.cshtml" />
     <Content Include="Views\Player\Buy.cshtml" />
+    <Content Include="Views\Account\ShowPlayers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

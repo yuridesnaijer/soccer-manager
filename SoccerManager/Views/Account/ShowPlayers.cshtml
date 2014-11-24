@@ -1,0 +1,19 @@
+﻿
+
+@{
+    ViewBag.Title = "ShowPlayers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ShowPlayers</h2>
+
+<table>
+    @foreach (var p in Model as List<SoccerManager.Models.Player>)
+    {
+        <tr>
+            <td>@p.PlayerName</td>
+            <td>@p.price</td>
+            <td>@Html.ActionLink("Sell", "Sell", "Player", new { id = p.PlayerId }, null)</td>
+        </tr>
+    }
+</table>

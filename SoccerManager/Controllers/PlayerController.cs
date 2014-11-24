@@ -12,7 +12,7 @@ using WebMatrix.WebData;
 namespace SoccerManager.Controllers
 {
     [InitializeSimpleMembership]
-    [Authorize(Roles = "admin")]
+    [Authorize(Roles = "admin, user")]
     public class PlayerController : Controller
     {
         private UsersContext db = new UsersContext();
@@ -27,14 +27,12 @@ namespace SoccerManager.Controllers
         }
 
 
-        [AllowAnonymous]
         public ActionResult ForSale()
         {
             List<Player> players = db.Players.Where(p => p.TeamId == null).ToList();
             return View(players);
         }
 
-        [AllowAnonymous]
         public ActionResult Buy(int id = 0)
         {
             //pak de speler die gekocht moet worden
@@ -69,9 +67,26 @@ namespace SoccerManager.Controllers
             return View();
         }
 
+        public ActionResult Sell(int id = 0)
+        {
+            Player player = db.Players.Find(id);
+            var price = player.price;
+            var userId = WebSecurity.CurrentUserId;
+            var team = db.Teams.Find(userId);
+            var teamMoney = team.Money;
+
+            db.Entry(team).State = EntityState.Modified;
+            team.Money += price;
+
+            db.Entry(player).State = EntityState.Modified;
+            player.TeamId = null;
+            db.SaveChanges();
+
+            return View("ShowPlayers");
+        }
+
         //
         // GET: /Player/Details/5
-        [AllowAnonymous]
         public ActionResult Details(int id = 0)
         {
             Player player = db.Players.Find(id);

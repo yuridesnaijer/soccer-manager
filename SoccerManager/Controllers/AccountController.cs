@@ -25,6 +25,7 @@ namespace SoccerManager.Controllers
             //Als er niet 0 resultaten zijn het team van de user laten zien
             if(userTeam.Count != 0){
                 ViewBag.UserHasTeam = true;
+
                 return View(userTeam);
             }
                 //anders de teams zoeken die nog geen coach hebben
@@ -52,6 +53,13 @@ namespace SoccerManager.Controllers
 
             return RedirectToAction("ShowProfile");
         }
+
+        //Get: /Account/Showplayer/teamid
+        public ActionResult ShowPlayers(int id = 0)
+        {
+            return View(db.Players.Where(p => p.TeamId == id).ToList());
+        }
+
         //
         // GET: /Account/Login
 
