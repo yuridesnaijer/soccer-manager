@@ -1,0 +1,54 @@
+﻿@model IEnumerable<SoccerManager.Models.Team>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (User.IsInRole("admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TeamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Money)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserProfile.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeamName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Money)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserProfile.UserName)
+        </td>
+        <td>
+            @if (User.IsInRole("admin"))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = item.TeamId })
+                @Html.ActionLink("Delete", "Delete", new { id = item.TeamId })
+            }
+            
+            @Html.ActionLink("Details", "Details", new { id=item.TeamId })
+            
+        </td>
+    </tr>
+}
+
+</table>

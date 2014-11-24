@@ -1,0 +1,51 @@
+﻿@model SoccerManager.Models.Team
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details of @Html.DisplayFor(model => model.TeamName)</h2>
+
+<fieldset>
+    <legend>Team</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TeamName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TeamName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Money)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Money)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserProfile.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserProfile.UserName)
+    </div>
+</fieldset>
+
+<table>
+    
+    @foreach (var player in (ViewBag.PlayersList as List<SoccerManager.Models.Player>))
+        //moet casten naar een list met players omdat de viewbag een gewoon object geeft
+    {
+        <tr>
+            <td>@player.PlayerName</td>
+            <td>@player.price</td>
+        </tr>        
+    }
+</table>
+<p>
+    @if (User.IsInRole("admin"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id=Model.TeamId })
+    }    
+    @Html.ActionLink("Back to List", "Index")
+</p>

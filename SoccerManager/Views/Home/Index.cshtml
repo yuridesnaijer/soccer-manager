@@ -1,0 +1,39 @@
+﻿@model SoccerManager.Models.ViewModels.TeamNewsViewModel
+@{
+    ViewBag.Title = "Soccer Manager in .NET";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+        </div>
+    </section>
+
+    <section>
+        <h2>News</h2>
+        @foreach (var n in Model.NewsList.Take(3))
+        {
+            <article>
+                <h3>@n.Title</h3>
+                <small>@n.PostedDate</small>
+            </article>
+            
+        }
+    </section>
+
+    <section>
+        <h2>Best Teams</h2>
+        @foreach (var t in Model.Teamslist.Take(3))
+        {
+            <article>
+                <h3>@t.TeamName</h3>
+                <small>@t.Money</small>
+            </article>
+        }
+    </section>
+
+}
+

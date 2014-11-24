@@ -1,0 +1,42 @@
+﻿@model System.Collections.Generic.List<SoccerManager.Models.Team>
+@{
+    ViewBag.Title = "ShowProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ShowProfile</h2>
+
+@if (ViewBag.UserHasTeam)
+{
+    <h2>Your Team:</h2>
+    //moet een foreach gebruiken want ik krijg een list
+    foreach (var t in Model)
+    {
+        <p>@t.TeamName</p>
+    
+        <h2>Money</h2>
+        <p>@t.Money</p>
+    }
+}
+else
+{
+    <h2>Pick a Team:</h2>
+
+    <table>
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td>
+                    @t.TeamName
+                </td>
+                <td>@Html.ActionLink("Pick!", "ChooseTeam", new { id = t.TeamId })</td>
+            </tr>
+        }
+    </table>
+    
+}
+
+
+
+
+@Html.Partial("_UserProfileNavigationPartial")

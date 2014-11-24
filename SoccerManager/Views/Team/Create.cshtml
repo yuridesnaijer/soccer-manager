@@ -1,0 +1,52 @@
+﻿@model SoccerManager.Models.Team
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Team</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TeamName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TeamName)
+            @Html.ValidationMessageFor(model => model.TeamName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Money)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Money)
+            @Html.ValidationMessageFor(model => model.Money)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CoachId, "UserProfile")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CoachId", String.Empty)
+            @Html.ValidationMessageFor(model => model.CoachId)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

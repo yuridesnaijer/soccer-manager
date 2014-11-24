@@ -1,0 +1,20 @@
+﻿@model IEnumerable<SoccerManager.Models.News>
+
+@{
+    ViewBag.Title = "News";
+}
+
+<h2>News</h2>
+@if (User.IsInRole("admin"))
+{
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+}
+
+
+@foreach (var item in Model) {
+    @Html.Partial("_NewsPartial", item)
+    
+}
+

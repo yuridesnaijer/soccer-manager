@@ -1,0 +1,39 @@
+﻿@model SoccerManager.Models.News
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>News</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Message)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Message)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PostedDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostedDate)
+    </div>
+</fieldset>
+<p>
+@if (User.IsInRole("admin"))
+{
+    @Html.ActionLink("Edit", "Edit", new { id=Model.NewsId });
+}
+    @Html.ActionLink("Back to List", "Index")
+</p>
