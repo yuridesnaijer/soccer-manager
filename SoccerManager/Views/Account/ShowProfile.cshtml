@@ -16,6 +16,8 @@
     
         <h2>Money</h2>
         <p>@t.Money</p>
+    
+    @Html.ActionLink("Play match!", "match", "Team",new { id = t.TeamId }, null)
     }
 }
 else
@@ -35,7 +37,6 @@ else
     </table>
     
 }
-
 
 
 

@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Details";
+    ViewBag.nr = 0;
 }
 
 <h2>Details of @Html.DisplayFor(model => model.TeamName)</h2>
@@ -31,15 +32,20 @@
     </div>
 </fieldset>
 
+<p>total value: @ViewBag.Value</p>
+
 <table>
     
+    @{ var i = 1; }
     @foreach (var player in (ViewBag.PlayersList as List<SoccerManager.Models.Player>))
         //moet casten naar een list met players omdat de viewbag een gewoon object geeft
     {
         <tr>
+            <td>@i.ToString()</td>
             <td>@player.PlayerName</td>
             <td>@player.price</td>
-        </tr>        
+        </tr>
+        i++;        
     }
 </table>
 <p>

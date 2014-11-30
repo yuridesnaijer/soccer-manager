@@ -354,6 +354,8 @@
     <Content Include="Views\Player\ForSale.cshtml" />
     <Content Include="Views\Player\Buy.cshtml" />
     <Content Include="Views\Account\ShowPlayers.cshtml" />
+    <Content Include="Views\Team\Match.cshtml" />
+    <Content Include="Views\Player\Sell.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

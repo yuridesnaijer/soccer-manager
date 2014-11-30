@@ -19,6 +19,7 @@
             <article>
                 <h3>@n.Title</h3>
                 <small>@n.PostedDate</small>
+                @Html.ActionLink("Show News", "Details", "News", new { id = n.NewsId }, null)
             </article>
             
         }
@@ -31,6 +32,7 @@
             <article>
                 <h3>@t.TeamName</h3>
                 <small>@t.Money</small>
+                @Html.ActionLink("Show Team", "Details", "Team", new {id = t.TeamId }, null)
             </article>
         }
     </section>

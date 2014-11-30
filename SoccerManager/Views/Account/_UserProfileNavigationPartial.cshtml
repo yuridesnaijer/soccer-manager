@@ -6,8 +6,10 @@
         <li>@Html.ActionLink("Change Password", "Manage", "Account")</li>
         @if (User.IsInRole("admin"))
         {
+            <li><h3>Admin:</h3></li>
             <li>@Html.ActionLink("Team Manager", "index", "Team")</li>
             <li>@Html.ActionLink("Player Manager", "index", "Player")</li>
+            <li>@Html.ActionLink("News Manager", "create", "News")</li>
         }
     </ul>
 </aside>

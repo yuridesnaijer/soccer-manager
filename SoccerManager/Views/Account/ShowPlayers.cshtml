@@ -8,12 +8,15 @@
 <h2>ShowPlayers</h2>
 
 <table>
+    @{ var i = 1; }
     @foreach (var p in Model as List<SoccerManager.Models.Player>)
     {
         <tr>
+            <td>@i</td>
             <td>@p.PlayerName</td>
             <td>@p.price</td>
             <td>@Html.ActionLink("Sell", "Sell", "Player", new { id = p.PlayerId }, null)</td>
         </tr>
+        i++;
     }
 </table>

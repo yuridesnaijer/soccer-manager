@@ -54,10 +54,13 @@ namespace SoccerManager.Controllers
             return RedirectToAction("ShowProfile");
         }
 
-        //Get: /Account/Showplayer/teamid
+        //Get: /Account/Showplayer/userid
         public ActionResult ShowPlayers(int id = 0)
         {
-            return View(db.Players.Where(p => p.TeamId == id).ToList());
+            Team team = db.Teams.Where(t => t.CoachId == id).FirstOrDefault(); 
+
+
+            return View(db.Players.Where(p => p.TeamId == team.TeamId).ToList());
         }
 
         //

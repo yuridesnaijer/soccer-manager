@@ -39,11 +39,11 @@ namespace SoccerManager.Controllers
             Player player = db.Players.Find(id);
 
             // sla de prijs van de speler op
-            var price = db.Entry(player).Entity.price;
+            var price = player.price;
             // sla de id van de user die nu is ingelogd op
             var userId = WebSecurity.CurrentUserId;
             //sla het team op dat bij de huidige user hoort
-            var team = db.Teams.Find(userId);
+            Team team = db.Teams.Where(t => t.CoachId == userId).FirstOrDefault();
             //sla de money van dat team op
             var teamMoney = team.Money;
             //kijken of er genoeg geld is
@@ -57,11 +57,11 @@ namespace SoccerManager.Controllers
                 //team id toevoegen aan de speler
                 player.TeamId = team.TeamId;
                 db.SaveChanges();
-                ViewBag.Buy = true;
+                ViewBag.Buy = "You have purchased "+ player.PlayerName +"!";
             }
             else
             {
-                ViewBag.buy = false;
+                ViewBag.buy = "You don't have enough money...";
             }
 
             return View();
@@ -72,7 +72,7 @@ namespace SoccerManager.Controllers
             Player player = db.Players.Find(id);
             var price = player.price;
             var userId = WebSecurity.CurrentUserId;
-            var team = db.Teams.Find(userId);
+            Team team = db.Teams.Where(t => t.CoachId == userId).FirstOrDefault();
             var teamMoney = team.Money;
 
             db.Entry(team).State = EntityState.Modified;
@@ -82,7 +82,9 @@ namespace SoccerManager.Controllers
             player.TeamId = null;
             db.SaveChanges();
 
-            return View("ShowPlayers");
+            ViewBag.Message = "You have sold " + player.PlayerName + "!";
+
+            return View();
         }
 
         //
