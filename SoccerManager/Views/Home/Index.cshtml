@@ -12,7 +12,7 @@
         </div>
     </section>
 
-    <section>
+    <section class="float-left">
         <h2>News</h2>
         @foreach (var n in Model.NewsList.Take(3))
         {
@@ -25,7 +25,7 @@
         }
     </section>
 
-    <section>
+    <section class="float-right">
         <h2>Best Teams</h2>
         @foreach (var t in Model.Teamslist.Take(3))
         {

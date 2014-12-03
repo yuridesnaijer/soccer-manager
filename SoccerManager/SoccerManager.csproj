@@ -349,7 +349,7 @@
     <Content Include="Views\News\Edit.cshtml" />
     <Content Include="Views\News\Delete.cshtml" />
     <Content Include="Views\Account\ShowProfile.cshtml" />
-    <Content Include="Views\Account\_UserProfileNavigationPartial.cshtml" />
+    <Content Include="Views\Shared\_UserProfileNavigationPartial.cshtml" />
     <Content Include="Views\News\_NewsPartial.cshtml" />
     <Content Include="Views\Player\ForSale.cshtml" />
     <Content Include="Views\Player\Buy.cshtml" />

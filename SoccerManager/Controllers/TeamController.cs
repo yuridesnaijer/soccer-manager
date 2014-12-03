@@ -89,7 +89,7 @@ namespace SoccerManager.Controllers
 
                 ViewBag.Result = "You lost! " + prize + " prize money is taken.";
             }
-
+            //hier wordt de tegenstander uitgezocht.
             ViewBag.Opponent = (Team)otherTeams[r.Next(otherTeams.Count())];
 
             return View("Match");

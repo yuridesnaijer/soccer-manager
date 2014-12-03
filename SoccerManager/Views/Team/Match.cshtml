@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Match";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (ViewBag.Opponent != null)
+{
+    <h2>Match Against:</h2>
+    <p>@ViewBag.Opponent.TeamName</p>
+}
+
+<p>@ViewBag.Result</p>
+
+@Html.ActionLink("Back", "ShowProfile", "Account")
