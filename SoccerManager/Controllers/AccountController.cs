@@ -36,9 +36,7 @@ namespace SoccerManager.Controllers
                 ViewBag.UserHasTeam = false;
 
                 return View(userTeam);
-            }
-
-            
+            }            
         }
         
         public ActionResult ChooseTeam(int id = 0)
